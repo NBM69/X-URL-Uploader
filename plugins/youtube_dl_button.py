@@ -318,37 +318,7 @@ async def youtube_dl_call_back(bot, update):
             else:
                 logger.info("Did this happen? :\\")
             end_two = datetime.now()
-            time_taken_for_upload = (end_two - end_one).seconds
-            #
-            media_album_p = []
-            if images is not None:
-                i = 0
-                caption = "© @xurluploaderbot"
-                if is_w_f:
-                    caption = "/upgrade to Plan D to remove the watermark\n© @AnyDLBot"
-                for image in images:
-                    if os.path.exists(image):
-                        if i == 0:
-                            media_album_p.append(
-                                pyrogram.InputMediaPhoto(
-                                    media=image,
-                                    caption=caption,
-                                    parse_mode="html"
-                                )
-                            )
-                        else:
-                            media_album_p.append(
-                                pyrogram.InputMediaPhoto(
-                                    media=image
-                                )
-                            )
-                        i = i + 1
-            await bot.send_media_group(
-                chat_id=update.message.chat.id,
-                disable_notification=True,
-                reply_to_message_id=update.message.message_id,
-                media=media_album_p
-            )
+            time_taken_for_upload = (end_two - end_one).seconds 
             #
             try:
                 shutil.rmtree(tmp_directory_for_each_user)
